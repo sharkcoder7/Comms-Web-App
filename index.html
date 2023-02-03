@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comms</title>
+  </head>
+
+  <!-- 
+    By default, `document.activeElement` the body element.
+    When a modal dialog is opened, it attempts to get the current 
+    `document.activeElement` (i.e. the currently focused element) and 
+    then when the dialog is closed it attempts to return focused to that
+    previously focused element. In Google Chrome, if the dialog is closed 
+    (removing the element that had focused from the DOM) and you attempt to
+    focus a body element without `tabindex="-1"` (i.e. an element which is
+    unfocusable), then keyboard events stop working. My guess is that this 
+    is because, in this scenerio, nothing has focus in Google Chrome and
+    (apparently) that means keyboard events can't fire. To get around this
+    issue, we need to ensure that the body element is focusable 
+    programmatically.
+  -->
+  <body tabindex="-1">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+      <div
+        style="
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        Loading...
+      </div>
+    </div>
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>
